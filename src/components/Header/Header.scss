@@ -1,0 +1,36 @@
+.Header{
+    background: $white;
+    color: $black;
+    text-align: left;
+    width: auto;
+    padding: 0px 80px;
+    position: relative;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    border-bottom: 3px solid $violet;
+    @include boxShadow;
+
+    #brand-logo{
+        display: flex;
+        align-items: center;
+
+        .brand-logo--img{
+            width: 50px;
+            padding-right: 15px;
+        }
+
+        .brand-logo--name{
+            font-size: 24px;
+        }
+    }
+
+    .greeting{
+        font-size: 18px;
+        font-weight: normal;
+
+        .greeting--name{
+            font-weight: 600;
+        }
+    }
+}

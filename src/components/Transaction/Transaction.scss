@@ -1,0 +1,50 @@
+.Ledger--container{
+    border-left: 1px solid #ccc;
+    display:block;
+    width: auto;
+
+    .Transaction{
+        width: auto;
+        display: block;
+        position: relative;
+
+        &::after{
+            content: '';
+            display: block;
+            width: 10px;
+            margin: 0 auto;
+            border-bottom: 1px solid #ccc;
+        }
+
+        span.remove--icon {
+            position: absolute;
+            right: 20px;
+            top: 0px;
+            opacity: .2;
+            z-index: 2;
+            font-size: 8px;
+
+            &:hover{
+            cursor: pointer;
+            }
+        }
+
+        &.Transaction--Expense{
+            .transactionAmount{
+                &::before{
+                    content: '-';
+                    display: inline-block;
+                }
+            }
+        }
+
+        &.Transaction--Deposit{
+            .transactionAmount{
+                &::before{
+                    content: '+';
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

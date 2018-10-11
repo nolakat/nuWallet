@@ -1,0 +1,13 @@
+.walletPicker{
+    display: table;
+    width: 40%;
+    min-width: 300px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+
+    button{
+        font-size:14px;
+        min-width:215px;
+    }
+}

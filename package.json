@@ -3,12 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^5.5.3",
+    "node-sass": "^4.9.3",
+    "prop-types": "^15.6.2",
+    "re-base": "^4.0.0",
     "react": "^16.5.2",
+    "react-animated-number": "^0.4.4",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.4"
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.0.4",
+    "react-tabs": "^2.3.0",
+    "react-transition-group": "^2.5.0",
+    "save": "^2.3.2",
+    "serve": "^10.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve --single ./build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

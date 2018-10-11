@@ -1,0 +1,47 @@
+.Budget-Column{
+    display: flex;
+    flex-flow: nowrap column;
+    height: 100%;
+    border-right: 1px solid #ccc;
+
+
+    .Budget-Column--detail{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-bottom: 1px solid #ccc;
+
+
+        &:hover{
+
+            .budget-logo{
+                position: relative;
+                top: -15px;
+                transition: all .8s ease;
+                opacity: .8;
+            }
+        }
+
+        .budget-logo{
+            width: 80px;
+            margin-right: 25px;
+            opacity: .5;
+            top: 0px;
+            position: relative;
+            transition: all .8s ease;
+        }
+
+        .Budget-tally{
+            font-size: 20px;
+            color: #ccc;
+            margin-left: 8px;
+
+            sup,sub{
+                color: $black;
+                opacity: .7;
+            }
+        }
+    }
+}

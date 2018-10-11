@@ -1,0 +1,53 @@
+
+div#root{
+height: 100%;
+display: flex;
+flex-flow: column;
+
+@media(max-width: 768px){
+    height: auto;
+}
+}
+.nuWallet--body{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:center;
+    text-align: center;
+     height: 90%;
+
+    >div{
+        height: 100%;
+    }
+
+
+
+    .col-1{
+        flex: .5 1 auto;
+
+    }
+    .col-2{
+        flex: 1.5 0 250px;
+
+    }
+
+    .Header{
+        width: 100%;
+        top: 0px;
+    }
+
+    @media(max-width: 768px){
+
+
+        >div{
+            width: 100%;
+            height: auto;
+
+            &.col-2{
+                order: 1;
+            }
+            &.col-1{
+                order: 2;
+            }
+        }
+    }
+}

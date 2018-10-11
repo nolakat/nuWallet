@@ -1,0 +1,12 @@
+@import '/assets/styles/colors.scss';
+@import '/assets/styles/BasicStyle.scss';
+@import '/assets/styles/Header.scss';
+
+
+@import 'components/Header/Header.scss';
+@import 'components/Budget/Budget.scss';
+@import 'components/Ledger/Ledger.scss';
+@import 'components/Expense/Expense.scss';
+@import 'components/Transaction/Transaction.scss';
+@import 'components/Footer/Footer.scss';
+@import 'components/WalletPicker/WalletPicker.scss';
