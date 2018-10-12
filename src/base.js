@@ -4,9 +4,9 @@ import firebase from "firebase";
 
 const firebaseApp = firebase.initializeApp({
         // Initialize Firebase
-            apiKey: "AIzaSyAFXUTQHdMyDcZotAvT1BQE8RkW19oEOdU",
-            authDomain: "nuwallet-55e96.firebaseapp.com",
-            databaseURL: "https://nuwallet-55e96.firebaseio.com",
+            apiKey: MYAPIKEY,
+            authDomain: MYAUTHODOMAIN,
+            databaseURL: MYDATABASEURL,
 
 });
 
