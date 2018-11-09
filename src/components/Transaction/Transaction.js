@@ -13,6 +13,7 @@ class Transaction extends React.Component{
         }).format(this.props.content.amount);
         let category = this.props.content.category;
         let isDeposit = this.props.content.deposit;
+        let entryid = this.props.entryid;
 
 
 
@@ -20,7 +21,7 @@ class Transaction extends React.Component{
         return(
 
             <div className={"Transaction Transaction--" + (isDeposit ? 'Deposit' : 'Expense')}>
-            <span class="remove--icon">&#x274c;</span>
+            <span class="remove--icon" onClick={() => this.props.removeMethod(entryid)}>&#x274c;</span>
             <h5>{category}</h5>
             <h3 class="transactionAmount">{price}</h3>
             </div>

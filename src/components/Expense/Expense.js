@@ -129,7 +129,7 @@ class Expense extends React.Component{
                     <TabPanel>
 
                         <form className="deposit-form" onSubmit={this.submitDeposit}>
-                                    <h5>{getEntryMsg()}</h5>;
+                                    <h5>{getEntryMsg()}</h5>
                                     <div className="input-wrap">
                                         <input name="price" ref={this.amountRef} type="number" step="0.01" placeholder="Enter Amount Here" required></input>
                                         <button type="submit">Submit</button>

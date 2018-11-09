@@ -77,7 +77,7 @@ class App extends Component {
       //deposits do not affect budget limits
       console.log('amount', amount);
 
-      return this.setState({ total: this.state.total -= amount});
+      return this.setState({ total: this.state.total += amount});
     }
 
     subtractValue = (amount, category)=> {
@@ -97,6 +97,22 @@ class App extends Component {
      const categories = {...this.state.categories};
       categories[`categories--${Date.now()}`] = newCategory;
       this.setState({categories: categories});
+    }
+
+    deleteTransaction = (entryid) =>
+    {
+      const transactions = {...this.state.transactions};
+
+      let category = transactions[entryid].category;
+
+      if(transactions[entryid].deposit){
+        this.subtractValue(transactions[entryid].amount);
+      } else {
+        this.addValue(transactions[entryid].amount);
+      }
+
+      transactions[entryid] = null;
+      this.setState({transactions});
 
     }
 
@@ -115,7 +131,7 @@ class App extends Component {
               <Expense addCategoryMethod ={this.addCategory} total={this.state.total} currentCategories={this.state.categories} submitTransaction={this.submitTransaction} />
           </div>
           <div className="Ledger--container col-1" ref={(div) => {this.budgetList = div;}}>
-            {Object.keys(this.state.transactions).map(key => <Transaction key={key} content={this.state.transactions[key]} />)}
+            {Object.keys(this.state.transactions).map(key => <Transaction entryid={key} content={this.state.transactions[key]} removeMethod={this.deleteTransaction} />)}
           </div>
         </div>
         <Footer />
