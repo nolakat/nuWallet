@@ -18,11 +18,8 @@ class App extends Component {
 
   state={
     transactions: {},
-    total: 0,
-    chickenSum: 0,
-    donutSum: 0,
-    pizzaSum: 0,
-    hamburgerSum: 0
+    categories: {},
+    total: 0
   };
 
   componentDidMount(){
@@ -44,7 +41,6 @@ class App extends Component {
 
   componentDidUpdate() {
     localStorage.setItem(this.props.match.params.walletId, JSON.stringify(this.state.total));
-
     this.scrollToBottom();
   }
 
@@ -59,12 +55,12 @@ class App extends Component {
 
 
    submitTransaction(transaction){
-
+    console.log('submit transaction run');
     //grab keys
     const isDeposit = transaction['deposit'];
     const newAmount = transaction['amount'];
     const newCategory = transaction['category'];
-
+    console.log('isDesposit', isDeposit);
     //do the math
     isDeposit ? this.addValue(newAmount, newCategory): this.subtractValue(newAmount, newCategory);
 
@@ -76,34 +72,35 @@ class App extends Component {
     return;
   };
 
-    sortCategory = (val) => {
-      switch(val){
-        case 'chicken':
-          return 'chickenSum';
-        case 'pizza':
-          return 'pizzaSum';
-          case 'donuts':
-          return 'donutSum';
-          case 'hamburgers':
-          return 'hamburgerSum';
-          default:
-          return null;
+
+     addValue = (amount, category)=> {
+      //deposits do not affect budget limits
+      console.log('amount', amount);
+
+      return this.setState({ total: this.state.total -= amount});
+    }
+
+    subtractValue = (amount, category)=> {
+    //sort budget category
+     {Object.keys(this.state.categories).map((key) => {
+      if(this.state.categories[key].name ==  category){
+         return this.state.categories[key].total += amount;
       }
+    })
     };
 
-     addValue = (num)=> {
-      //deposits do not affect budget limits
-
-      return this.setState({ total: this.state.total += num});
+     return this.setState({ total: this.state.total -= amount});
     }
 
-    subtractValue = (num, cat)=> {
-    //sort budget category
-     let category = this.sortCategory(cat);
-     this.setState({[category]: this.state[category] += num });
+    addCategory = (newCategory) => {
+     console.log('adding category', newCategory);
+     const categories = {...this.state.categories};
+      categories[`categories--${Date.now()}`] = newCategory;
+      this.setState({categories: categories});
 
-      return this.setState({ total: this.state.total -= num});
     }
+
+
 
   render() {
 
@@ -112,10 +109,10 @@ class App extends Component {
         <Header person={this.props.match.params.walletId}/>
         <div className="nuWallet--body">
           <div className="Budget--container col-1">
-              <Budget chicken={this.state.chickenSum} donuts={this.state.donutSum} pizza={this.state.pizzaSum} burgers={this.state.hamburgerSum} />
+              <Budget currentCategories={this.state.categories} />
           </div>
           <div className="Expense--container col-2">
-              <Expense total={this.state.total} submitTransaction={this.submitTransaction} />
+              <Expense addCategoryMethod ={this.addCategory} total={this.state.total} currentCategories={this.state.categories} submitTransaction={this.submitTransaction} />
           </div>
           <div className="Ledger--container col-1" ref={(div) => {this.budgetList = div;}}>
             {Object.keys(this.state.transactions).map(key => <Transaction key={key} content={this.state.transactions[key]} />)}

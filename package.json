@@ -18,8 +18,8 @@
     "serve": "^10.0.2"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve --single ./build",
+    "start": "react-scripts start",
+    "upload": "serve --single ./build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

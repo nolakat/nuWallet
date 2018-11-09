@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: center;
 
+    .category-form{
+        display: flex;
+        margin: 0 auto;
+    }
+
     .accountBalance{
         font-size: 4em;
     }

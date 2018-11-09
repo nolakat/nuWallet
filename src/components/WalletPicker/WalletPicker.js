@@ -24,7 +24,7 @@ class  WalletPicker extends React.Component{
         <form className="walletPicker" onSubmit={this.openWallet}>
 
         <h2>What's Your Name?</h2>
-        <div class="input-wrap">
+        <div className="input-wrap">
         <input type="text" ref={this.userInput} required placeholder="Wallet Name" />
         <button type="submit">Open Wallet</button>
         </div>
